@@ -87,4 +87,13 @@ public class DogTests {
         actualDog = new Dog(AnimalType.UNKNOWN, Skin.UNKNOWN,Gender.UNKNOWN, Breed.UNKNOWN);
         assertEquals("The dog goes Bark! Bark!", actualDog.speak(), "I was expecting Bark");
     }
+
+    @Test
+    @DisplayName("Dog Set Number of Legs Test")
+    public void dogSetNumLegsTest()
+    {
+        actualDog = new Dog(AnimalType.UNKNOWN, Skin.UNKNOWN,Gender.UNKNOWN, Breed.UNKNOWN);
+        actualDog.setNumberOfLegs(3);
+        assertEquals(3, actualDog.getNumberOfLegs(), "I was expecting 3 legs!");
+    }
 }
