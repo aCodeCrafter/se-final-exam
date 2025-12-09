@@ -1,8 +1,9 @@
-package animals.petstore.pet.types;
+package tests;
 
 import animals.petstore.pet.attributes.Breed;
 import animals.petstore.pet.attributes.Gender;
 import animals.petstore.pet.attributes.*;
+import animals.petstore.pet.types.Snake;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

@@ -1,11 +1,9 @@
-package animals.petstore.pet;
+package tests;
 
+import animals.petstore.pet.Pet;
 import animals.petstore.pet.attributes.Gender;
 import animals.petstore.pet.attributes.PetType;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.math.BigDecimal;
 
@@ -24,7 +22,7 @@ class PetTest {
     void testToString() {
         PetType pt = PetType.UNKNOWN;
         pet = new Pet(pt, BigDecimal.valueOf(3), Gender.UNKNOWN);
-        assertEquals("The type of pet is " + pt + "!\nThe "+ pt + " gender is " + pet.gender + "!\nThe "+ pt +
+        assertEquals("The type of pet is " + pt + "!\nThe "+ pt + " gender is " + pet.getGender() + "!\nThe "+ pt +
                         " cost is $" + pet.getCost() + "!\n",
                 pet.toString());
     }
