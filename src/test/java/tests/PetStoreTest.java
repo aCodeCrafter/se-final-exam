@@ -130,4 +130,28 @@ public class PetStoreTest
         assertTrue(Numbers.isEven(number));
     }
 
+    @Test
+    /**
+     * Test to make sure error is thrown when a given pet has an id = 0 and is thus not part of the store
+     */
+    void testPetThrowPetNotFoundSaleException() {
+        PetStore ps = new PetStore();
+        Cat cat = new Cat(AnimalType.DOMESTIC, Skin.FUR, Gender.MALE, Breed.BURMESE, new BigDecimal(100));
+        cat.setPetStoreId(0);
+        ps.initAddDuplicateItem(cat);
+        assertThrows(PetNotFoundSaleException.class, () -> ps.soldPetItem(cat));
+    }
+
+    /**
+     * Test to make sure error is thrown when two pets have same petStoreId
+     */
+    @Test
+    void testPetThrowDuplicatePetStoreRecordException() {
+        PetStore ps = new PetStore();
+        Cat cat1 = new Cat(AnimalType.DOMESTIC, Skin.FUR, Gender.MALE, Breed.BURMESE, new BigDecimal(100), 99);
+        Cat cat2 = new Cat(AnimalType.DOMESTIC, Skin.FUR, Gender.MALE, Breed.BURMESE, new BigDecimal(200), 99);
+        ps.addPetInventoryItem(cat1);
+        ps.addPetInventoryItem(cat2);
+        assertThrows(DuplicatePetStoreRecordException.class, () -> ps.soldPetItem(cat1));
+    }
 }

@@ -5,9 +5,13 @@ import animals.petstore.pet.attributes.Breed;
 import animals.petstore.pet.attributes.Gender;
 import animals.petstore.pet.attributes.Skin;
 import animals.petstore.pet.types.Cat;
+import animals.petstore.pet.types.Dog;
 import org.junit.jupiter.api.*;
 
+import java.math.BigDecimal;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CatTests {
@@ -89,5 +93,36 @@ public class CatTests {
     {
         actualCat = new Cat(AnimalType.UNKNOWN, Skin.UNKNOWN,Gender.UNKNOWN, Breed.UNKNOWN);
         assertEquals("The cat goes Meow! Meow!", actualCat.speak(), "I was expecting Prr");
+    }
+
+    @Test
+    @DisplayName("Cat constructor Test without price")
+    void catWithoutPrice() {
+        actualCat = new Cat(AnimalType.DOMESTIC, Skin.FUR, Gender.MALE, Breed.BURMESE);
+        assertInstanceOf(Cat.class, actualCat);
+    }
+
+    @Test
+    @DisplayName("Cat constructor Test with price")
+    void catWithPrice() {
+        actualCat = new Cat(AnimalType.DOMESTIC, Skin.FUR, Gender.MALE, Breed.BURMESE, new BigDecimal(100));
+        assertInstanceOf(Cat.class, actualCat);
+    }
+
+    @Test
+    @DisplayName("Cat Set Number of Legs Test")
+    public void catSetNumLegsTest()
+    {
+        actualCat = new Cat(AnimalType.UNKNOWN, Skin.UNKNOWN,Gender.UNKNOWN, Breed.UNKNOWN);
+        actualCat.setNumberOfLegs(3);
+        assertEquals(3, actualCat.getNumberOfLegs(), "I was expecting 3 legs!");
+    }
+
+    @Test
+    @DisplayName("Cat Set Number of Legs Test")
+    public void catPetType()
+    {
+        actualCat = new Cat(AnimalType.DOMESTIC, Skin.UNKNOWN,Gender.UNKNOWN, Breed.UNKNOWN);
+        assertEquals("The type of pet is CAT!", actualCat.typeOfPet(), "I was expecting 3 legs!");
     }
 }

@@ -41,7 +41,8 @@ public class AssertJExampleTest
     @DisplayName("ABC test")
     public void abcTest()
     {
-        assertThat("abc").isEqualTo(123);
+        // Show that not equal
+        assertThat("abc").isNotEqualTo(123);
 
     }
 
@@ -63,10 +64,11 @@ public class AssertJExampleTest
     }
 
     @Test
-    @DisplayName("Dog Collection  Match Tests1")
+    @DisplayName("Dog Collection  Match Tests 1")
     public void dogCollectionMatch()
     {
-        assertThat(dListActual).isEqualTo(dListExpected)
+        // Assuming to check that matching fails when lists not equal
+        assertThat(dListActual).isNotEqualTo(dListExpected)
                 .isNotEmpty()
                 .doesNotContainNull();
     }

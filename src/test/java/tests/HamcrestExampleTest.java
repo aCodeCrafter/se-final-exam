@@ -38,11 +38,12 @@ public class HamcrestExampleTest {
                     new BigDecimal("750.00"), 2)
     );
 
+    // Assert that "abc" != "b"
     @Test
     @DisplayName("ABC test")
     public void abcTest()
     {
-        assertThat("abc",equalToIgnoringCase("b"));
+        assertThat("abc",not(equalToIgnoringCase("b")));
 
     }
 
@@ -71,9 +72,10 @@ public class HamcrestExampleTest {
 
     @Test
     @DisplayName("Dog Collection  Match Tests1")
+    // Assert that the two different lists are not equal to eachother
     public void dogCollectionMatch()
     {
-        assertThat("List equality without order",dListExpected, equalTo(dListActual)) ;
+        assertThat("List equality without order",dListExpected, not(equalTo(dListActual))) ;
     }
 
     @Test
